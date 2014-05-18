@@ -1,0 +1,118 @@
+﻿<Application
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	x:Class="GoAgentUI.App"
+	StartupUri="MainWindow.xaml">
+	<Application.Resources>
+        <!--Window Normal Style-->
+        <Style x:Key="NormalWindow" TargetType="{x:Type Window}">
+            <Setter Property="Background" Value="#FF202020" />
+            <Setter Property="BorderThickness" Value="7" />
+            <Setter Property="Icon" Value="Resource/GoAgentICO.ico" />
+            <Setter Property="AllowsTransparency" Value="True" />
+            <Setter Property="ResizeMode" Value="CanMinimize" />
+            <Setter Property="WindowStyle" Value="None" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="6" Direction="270" Opacity="0.7" Color="#333333"/>
+                </Setter.Value>
+            </Setter>
+            <EventSetter Event="MouseLeftButtonDown" Handler="Window_MouseLeftButtonDown" />
+        </Style>
+        <!--Window Fade Animation-->
+        <Style x:Key="WindowFade" TargetType="{x:Type Window}" BasedOn="{StaticResource NormalWindow}">
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Window.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             From="0.0" To="1.0" Duration="0:0:0.3" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+            
+            <EventSetter Event="Window.Loaded" Handler="Window_ClosingEventSet" />
+        </Style>
+        <!--Window Normal Grid-->
+        <Style x:Key="GridNormal" TargetType="{x:Type Grid}">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="ClipToBounds" Value="True" />
+            <Setter Property="Margin" Value="0,0,0,16" />
+        </Style>
+        <!--Window Title TextBlock-->
+        <Style x:Key="WindowTitleText" TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Padding" Value="32,16,32,0" />
+            <Setter Property="Height" Value="48" />
+            <Setter Property="FontFamily" Value="Segoe UI Black" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <!--Window Close Button Style-->
+        <Style x:Key="CloseButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="Width" Value="37" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Property=Background}">
+                            <Grid>
+                                <Path x:Name="CloseIcon" Width="13" Height="11" Stretch="Fill" Fill="#777777" HorizontalAlignment="Left" Margin="12,6,12,6" Data="M 0,0 L 2,0 L 6,4 L 10,0 L 12,0 L 7,5 L 12,10 L 10,10 L 6,6 L 2,10 L 0,10 L 5,5 Z"/>
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#555555" />
+                                <Setter TargetName="CloseIcon" Property="Fill" Value="White" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#444444" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <EventSetter Event="Click" Handler="CloseButton_Click" />
+        </Style>
+        <!--Window Normal Button-->
+        <Style x:Key="NormalButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Property=Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="2">
+                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,6,6,8" />
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#007FE9" />
+                                <Setter Property="BorderBrush" Value="#DDDDDD" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Background" Value="#007FE9" />
+                                <Setter Property="BorderBrush" Value="#DDDDDD" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#005FC9" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>

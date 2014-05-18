@@ -1,0 +1,17 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoAgentUI", "GoAgentUI\GoAgentUI.csproj", "{55c3b4d0-803d-402b-b756-be5117937170}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55C3B4D0-803D-402B-B756-BE5117937170}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55C3B4D0-803D-402B-B756-BE5117937170}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55C3B4D0-803D-402B-B756-BE5117937170}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55C3B4D0-803D-402B-B756-BE5117937170}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
